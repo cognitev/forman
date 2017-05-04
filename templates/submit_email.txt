@@ -1,0 +1,6 @@
+
+{% for key, values in params.items %}
+  {% if key != "csrfmiddlewaretoken" %}
+    {{key}}:{{values|join:", "}}
+  {% endif %}
+{% endfor %}

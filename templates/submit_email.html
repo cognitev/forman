@@ -1,0 +1,10 @@
+<table border=1>
+  {% for key, values in params.items %}
+    {% if key != "csrfmiddlewaretoken" %}
+    <tr>
+      <td>{{key}}</td>
+      <td>{{values|join:", "}}</td>
+    </tr>
+    {% endif %}
+  {% endfor %}
+</table>

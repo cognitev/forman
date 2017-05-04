@@ -1,0 +1,48 @@
+<html>
+<head>
+  <title>{{survey.header_message}}</title>
+</head>
+<body>
+  <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<header  background="header_image">
+				{{survey.header_message}}
+			</header>
+      <form action="{% url 'forman:submit' survey.id %}" method="post" role="form">
+        {% csrf_token %}
+        {% for input in inputs %}
+          <div class="form-group">
+              <label for="{{input.title}}">
+                {{input.title}}
+              </label>
+              {% if input.display_type == "textarea" %}
+                <textarea name="{{input|slugify}}"></textarea>
+              {% elif input.display_type == "select" %}
+                <select name="{{input|slugify}}">
+                  {% for value in input.predefined_list %}
+                    <option value="{{value}}">{{value}}</option>
+                  {% endfor %}
+                </select>
+              {% elif input.display_type == "multi-select" %}
+                <select name="{{input|slugify}}" multiple="multiple">
+                  {% for value in input.predefined_list %}
+                    <option value="{{value}}">{{value}}</option>
+                  {% endfor %}
+                </select>
+              {% else %}
+                  <input type="{{input.display_type}}" name="{{input|slugify}}"/>
+              {% endif %}
+          </div>
+        {% endfor %}
+        <input type="submit" value="Submit" class="btn btn-default">
+      </form>
+      <footer background="footer_image">
+			     {{survey.footer_message}}
+			</footer>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
