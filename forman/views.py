@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_protect
 from models import *
 from django.core.mail import EmailMultiAlternatives
 import csv
+from django.conf import settings
 
 def preview_survey(request, survey_id):
     context = {}
@@ -33,8 +34,8 @@ def submit(request, survey_id):
     html_template = get_template('submit_email.html')
     text_format = text_template.render(submission)
     html_format = html_template.render(submission)
-    subject, from_email = 'New Survey Submited', 'info@adrelated.com'
-    to = ['mail.gamal@gmail.com']
+    subject, from_email = 'New Survey Submited', settings.FORMAN['sender_email']
+    to = settings.FORMAN['sender_email']
     msg = EmailMultiAlternatives(subject, text_format, from_email, to)
     msg.attach_alternative(html_format, "text/html")
     msg.send()

@@ -22,6 +22,6 @@ Quick start
 
 4. Start the development server and visit http://127.0.0.1:8000/admin/
    to create a survey (you'll need the Admin app enabled).
-
-5. Visit http://127.0.0.1:8000/survey/<survey_id> to fill in survey
-6. Visit http://127.0.0.1:8000/survey/<survey_id>/download to download a csv of submissions
+5. configure settings.FORMAN['sender_email'] and settings.FORMAN['receiver_email'] values
+6. Visit http://127.0.0.1:8000/survey/<survey_id> to fill in survey
+7. Visit http://127.0.0.1:8000/survey/<survey_id>/download to download a csv of submissions
