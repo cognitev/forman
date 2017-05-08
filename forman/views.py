@@ -35,13 +35,15 @@ def submit(request, survey_id):
     text_format = text_template.render(submission)
     html_format = html_template.render(submission)
     subject, from_email = 'New Survey Submited', settings.FORMAN['sender_email']
-    to = settings.FORMAN['sender_email']
+    to = settings.FORMAN['receiver_emails']
     msg = EmailMultiAlternatives(subject, text_format, from_email, to)
     msg.attach_alternative(html_format, "text/html")
     msg.send()
     if create_submission(survey_id, post_params):
+        #TODO respond with proper message!
         return HttpResponse("OK!")
     else:
+        #TODO respond with proper message!
         return HttpResponse("OH!")
 
 def download_csv(request, survey_id):
