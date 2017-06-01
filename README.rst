@@ -6,6 +6,9 @@ forman is a simple Django app to create survery forms and collect and export sub
 
 Quick start
 -----------
+0. Install forman::
+
+    pip install forman
 
 1. Add "forman" to your INSTALLED_APPS setting like this::
 
@@ -30,7 +33,6 @@ TODO
 ----
 
 1. Preview link in admin panel
-2. Better input rendering (specially radio buttons)
-3. Themes for forms
-4. Better success and failure messages (form submission)
-5. Better export formats for submissions
+2. Themes for forms
+3. Better success and failure messages (form submission)
+4. Better export formats for submissions
